@@ -4,7 +4,7 @@ var hosts = ["https://CraftYourWorld-Bot.nigelrex.repl.co"];
 var myVar;
 
 function cywbping() {
-  myVar = setInterval(bping, 18000);
+  myVar = setInterval(bping, 18000000);
 }
 function bping() {
   hosts.forEach(function (host) {
