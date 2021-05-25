@@ -18,6 +18,7 @@ const { MessageAttachment } = require("discord.js");
 
 const dotenv = require("dotenv").config();
 const keepAlive = require("./server");
+const cywbping = require("./server-ping");
 const pm2 = require("pm2");
 const fs = require("fs");
 const scaleImage = require("./scale");
@@ -390,7 +391,7 @@ client.on("messageReactionAdd", async (reaction, _user) => {
 });
 
 // client.on("message", (message) => {
-//   if (message.content.includes(blist)) 
+//   if (message.content.includes(blist))
 //     message.delete();
 //     message.channel.send({
 //       embed: {
@@ -399,11 +400,12 @@ client.on("messageReactionAdd", async (reaction, _user) => {
 //         color: "RED",
 //       },
 //     });
-  
+
 //   return;
 // });
 
 // member add and leave and roles and scale image commands end
 
 keepAlive();
+cywbping();
 client.login(process.env.bottoken);
