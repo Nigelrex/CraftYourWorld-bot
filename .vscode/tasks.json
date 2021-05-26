@@ -6,6 +6,13 @@
 			"script": "start",
 			"problemMatcher": [],
 			"label": "npm: start",
+			"detail": "node bot.js"
+		},
+		{
+			"type": "npm",
+			"script": "run",
+			"problemMatcher": [],
+			"label": "npm: run",
 			"detail": "nodemon bot.js",
 			"group": {
 				"kind": "build",
