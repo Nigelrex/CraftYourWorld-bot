@@ -28,7 +28,7 @@ const request = require("request").defaults({ encoding: null });
 const chalk = require("chalk");
 const scalePixelArt = require("scale-pixel-art");
 const Jimp = require("jimp");
-const blist = require("./commands/moderation/badwords.json");
+const { blist } = require("./badwords.json");
 const webhookID = process.env.webhookurl.substr(33, 18);
 const webhookToken = process.env.webhookurl.substr(52, 68);
 const creationsWebhook = new Discord.WebhookClient(webhookID, webhookToken);
@@ -390,19 +390,20 @@ client.on("messageReactionAdd", async (reaction, _user) => {
   }
 });
 
-// client.on("message", (message) => {
-//   if (message.content.includes(blist))
-//     message.delete();
-//     message.channel.send({
-//       embed: {
-//         title: "WARNING",
-//         description: `${message.author.tag} has been warned for swearing on this server`,
-//         color: "RED",
-//       },
-//     });
+client.on("message", (message) => {
+  if (message.content.includes(blist))
+  const embed = new Discord.MessageEmbed
+    message.delete();
+    message.channel.send({
+      embed: {
+        title: "WARNING",
+        description: `${message.author} has been warned for swearing on this server`,
+        color: "RED",
+      },
+    });
 
-//   return;
-// });
+  return;
+});
 
 // member add and leave and roles and scale image commands end
 
