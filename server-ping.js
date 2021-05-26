@@ -21,7 +21,7 @@ function bping() {
       var hr = d.getHours();
       var mi = d.getMinutes();
       var sec = d.getSeconds();
-      console.log("Time:" + hr + ":" + mi + ":" + sec + "Repl "+ msg);
+      console.log("Time:" + hr + ":" + mi + ":" + sec + " Repl "+ msg);
     });
   });
 }
