@@ -10,7 +10,7 @@ function cywbping() {
   var mi = d.getMinutes();
   var sec = d.getSeconds();
   console.log("Time:" + hr + ":" + mi + ":" + sec);
-  log("Time:" + hr + ":" + mi + ":" + sec);
+  log("Time:" + hr + ":" + mi + ":" + sec, "./logs/startup.log");
 }
 function bping() {
   hosts.forEach(function (host) {
@@ -21,7 +21,7 @@ function bping() {
       var mi = d.getMinutes();
       var sec = d.getSeconds();
       console.log("Time:" + hr + ":" + mi + ":" + sec + " Repl " + msg);
-      log("Time:" + hr + ":" + mi + ":" + sec + " Repl " + msg, "console.log");
+      log("Time:" + hr + ":" + mi + ":" + sec + " Repl " + msg, "./logs/ping.log");
     });
   });
 }

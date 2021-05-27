@@ -405,7 +405,7 @@ client.on("message", (message) => {
     });
     log(
       `${message.author.tag} used a profanity word in the server`,
-      "profanity.log"
+      "./logs/profanity.log"
     );
   }
 });

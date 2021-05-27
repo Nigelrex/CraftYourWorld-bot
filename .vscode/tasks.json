@@ -3,16 +3,16 @@
 	"tasks": [
 		{
 			"type": "npm",
-			"script": "start",
+			"script": "run",
 			"problemMatcher": [],
-			"label": "npm: start",
+			"label": "npm: run",
 			"detail": "node bot.js"
 		},
 		{
 			"type": "npm",
-			"script": "run",
+			"script": "start",
 			"problemMatcher": [],
-			"label": "npm: run",
+			"label": "npm: start",
 			"detail": "nodemon bot.js",
 			"group": {
 				"kind": "build",
