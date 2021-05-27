@@ -400,7 +400,7 @@ client.on("message", (message) => {
       embed: {
         title: "WARNING",
         description: `${message.author} has been warned for swearing on this server`,
-        color: "RED",
+        color: config.red,
       },
     });
     log(
