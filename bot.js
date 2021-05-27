@@ -29,6 +29,8 @@ const chalk = require("chalk");
 const scalePixelArt = require("scale-pixel-art");
 const Jimp = require("jimp");
 const { blist } = require("./badwords.json");
+const ping = require("ping");
+const log = require("log-to-file");
 const webhookID = process.env.webhookurl.substr(33, 18);
 const webhookToken = process.env.webhookurl.substr(52, 68);
 const creationsWebhook = new Discord.WebhookClient(webhookID, webhookToken);
@@ -391,8 +393,8 @@ client.on("messageReactionAdd", async (reaction, _user) => {
 });
 
 client.on("message", (message) => {
-  if (message.content.includes(blist))
-  const embed = new Discord.MessageEmbed
+  const swearWords = blist;
+  if (swearWords.some((word) => message.content.includes(word))) {
     message.delete();
     message.channel.send({
       embed: {
@@ -401,8 +403,11 @@ client.on("message", (message) => {
         color: "RED",
       },
     });
-
-  return;
+    log(
+      `${message.author.tag} used a profanity word in the server`,
+      "profanity.log"
+    );
+  }
 });
 
 // member add and leave and roles and scale image commands end

@@ -13,6 +13,7 @@
   "repository": "Nigelrex/CraftYourWorld-Bot",
   "dependencies": {
     "@discordjs/opus": "^0.5.0",
+    "@jimp/custom": "^0.16.1",
     "@replit/database": "^2.0.1",
     "canvas": "^2.8.0",
     "chalk": "^4.1.1",
