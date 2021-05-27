@@ -162,6 +162,11 @@ client.on("messageReactionAdd", async (reaction, user) => {
   if (!reaction.message.guild) return;
 
   if (reaction.message.channel.id === rochannel) {
+    if (reaction.emoji.id === "813364641911799890") {
+      await reaction.message.guild.members.cache
+        .get(user.id)
+        .roles.add("794570833757601802");
+    }
     if (reaction.emoji.id === "793404396556779552") {
       await reaction.message.guild.members.cache
         .get(user.id)
@@ -202,6 +207,11 @@ client.on("messageReactionRemove", async (reaction, user) => {
   const rochannel = config.rolesChannel;
 
   if (reaction.message.channel.id === rochannel) {
+    if (reaction.emoji.id === "813364641911799890") {
+      await reaction.message.guild.members.cache
+        .get(user.id)
+        .roles.remove("794570833757601802");
+    }
     if (reaction.emoji.id === "793404396556779552") {
       await reaction.message.guild.members.cache
         .get(user.id)
