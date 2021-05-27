@@ -4,8 +4,8 @@
   "description": "",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js",
-    "run": "nodemon bot.js"
+    "run": "node bot.js",
+    "start": "nodemon bot.js"
   },
   "keywords": [],
   "author": "Nigelrex",
