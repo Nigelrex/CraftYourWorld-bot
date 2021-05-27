@@ -1,6 +1,6 @@
 const ping = require("ping");
 const log = require("log-to-file");
-var hosts = ["https://CraftYourWorld-Bot.nigelrex.repl.co"];
+var hosts = ["https://CraftYourWorld-bot.nigelrex.repl.co"];
 var myVar;
 
 function cywbping() {
