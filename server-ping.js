@@ -1,6 +1,6 @@
 const ping = require("ping");
 const log = require("log-to-file");
-var hosts = ["https://craftyourworld-bot.nigelrex.repl.co"];
+var hosts = ["craftyourworld-bot.nigelrex.repl.co"];
 var myVar;
 
 function cywbping() {
@@ -20,8 +20,8 @@ function bping() {
       var hr = d.getHours();
       var mi = d.getMinutes();
       var sec = d.getSeconds();
-      console.log("Time:" + hr + ":" + mi + ":" + sec + " Repl " + msg);
-      log("Time:" + hr + ":" + mi + ":" + sec + " Repl " + msg, "./logs/ping.log");
+      console.log("Time:" + hr + ":" + mi + ":" + sec + " Repl https://" + msg);
+      log("Time:" + hr + ":" + mi + ":" + sec + " Repl https://" + msg, "./logs/ping.log");
     });
   });
 }
