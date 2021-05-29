@@ -5,7 +5,7 @@ var myVar;
 
 function cywbping() {
   var d = new Date();
-  myVar = setInterval(bping, 300000);
+  myVar = setInterval(bping, 60000);
   var hr = d.getHours();
   var mi = d.getMinutes();
   var sec = d.getSeconds();
