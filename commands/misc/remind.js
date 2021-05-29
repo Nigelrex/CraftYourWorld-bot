@@ -1,61 +1,61 @@
-const ms = require('ms')
-const config = require('../../config.json')
+const { InteractionResponseType } = require("discord-interactions");
 
 module.exports = {
-    name: "remind",
-    category: "utility",
-    description:{
-        usage: "remind <time> <reminder>",
-        content:  "Helps remind you something",
-    },
-    async execute(message, args, client, Discord) {
-        let time = args[0];
-        let user = message.author
-        let reminder = args.splice(1).join(' ')
+	command: {
+		name: "timer",
+		description: "Sets a timer and responds when it's done.",
+		options: [
+			{
+				type: 4,
+				name: "time",
+				description: "Time of the timer.",
+				required: true,
+			},
+			{
+				type: 3,
+				name: "unit",
+				description: "Unit of time to count by.",
+				choices: [
+					{
+						name: "Seconds",
+						value: "s",
+					},
+					{
+						name: "Minutes",
+						value: "m",
+					},
+					{
+						name: "Hours",
+						value: "h",
+					},
+				],
+			},
+		],
+	},
 
-        const notime = new Discord.MessageEmbed()
-            .setColor('RED')
-            .setDescription(`**Please specify the time!**`)
+	response: (interaction) => {
+		const options_time = interaction.data.options.find(
+			(o) => o.name == "time"
+		).value;
+		const options_unit = interaction.data.options.find(
+			(o) => o.name == "unit"
+		).value;
 
-        const wrongtime = new Discord.MessageEmbed()
-            .setColor('YELLOW')
-            .setDescription(`**Sorry I only do d, m, h, or s.**`)
+		//TODO Return an error when specified time is out of range
 
-        const reminderembed = new Discord.MessageEmbed()
-            .setColor('YELLOW')
-            .setDescription(`**Please tell me what you want to be reminded off**`)
+		setTimeout(() => {
+			require("../../util").createFollowupMessage(interaction.token, {
+				content: "Times up!",
+			});
+		}, options_time * (options_unit == "m" ? 60000 : options_unit == "h" ? 3600000 : 1000));
 
-        if (!args[0]) return message.channel.send(notime)
-        if (
-            !args[0].endsWith("d") &&   
-            !args[0].endsWith("m") &&
-            !args[0].endsWith("h") &&
-            !args[0].endsWith("s")
-        )
-
-
-            return message.channel.send(wrongtime)
-        if (!reminder) return message.channel.send(reminderembed)
-
-        const remindertime = new Discord.MessageEmbed()
-        .setColor(config.color)
-        .setDescription(`\**Your reminder will go off in ${time}**`)
-
-        message.channel.send(remindertime)
-
-        const reminderdm = new Discord.MessageEmbed()
-        .setColor(config.color)
-        .setTitle('**REMINDER**')
-        .setDescription(`**It has been ${time} here is your reminder:** ${reminder}`)  
-
-        setTimeout(async function () {
-           try{
-
-            await user.send(reminderdm)
-           }catch(err){
-
-           } 
-           
-        }, ms(time));
-    }
-}
+		return {
+			type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+			data: {
+				content: `Set! Your timer will go off in ${options_time}${
+					options_unit || "s"
+				}.`,
+			},
+		};
+	},
+};

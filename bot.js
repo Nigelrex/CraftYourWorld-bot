@@ -19,6 +19,7 @@ const { MessageAttachment } = require("discord.js");
 const dotenv = require("dotenv").config();
 const keepAlive = require("./server");
 const cywbping = require("./server-ping");
+const WOKCommands = require("wokcommands");
 const pm2 = require("pm2");
 const fs = require("fs");
 const scaleImage = require("./scale");
@@ -47,6 +48,12 @@ client.once("ready", () => {
   process.on("unhandledRejection", (error) => {
     console.error("Unhandled promise rejection:", error);
   });
+
+  // new WOKCommands(client, {
+  //   commandsDir: "commands",
+  //   testServers: [config.guildId],
+  //   showWarns: false,
+  // });
 });
 
 client.on("message", async (message) => {
